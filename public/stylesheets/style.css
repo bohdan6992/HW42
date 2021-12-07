@@ -1,0 +1,68 @@
+/* body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+div {
+  font-size: 20px;
+  
+}
+
+table,
+td {
+    border: 1px solid #333;
+} */
+
+
+   
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+  overflow-x: hidden;
+}
+
+body {
+  font-family: "Numito Sans", sans-serif;
+  background-color: var(--body);
+  color: hsl(200, 15%, 8%);
+  font-size: 14px;
+}
+.country-card{
+  border: 1px solid black;
+}
+
+.country-info {
+  font-weight: 900;
+  font-size: 1rem;
+}
+.country-header{
+  font-weight: 900;
+  font-size: 2rem;
+}
+.countryDetails {
+  /*color: white; */
+  font-weight: 100;
+  /* padding-left: 5%; */
+}
+
+img {
+  max-width: 100%;
+  min-height: 160px;
+  margin: auto;
+  display: block;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+
+
+
+
