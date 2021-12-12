@@ -5,8 +5,8 @@ const router = express.Router();
 const upload = multer();
 
 
-const getInfo = async(url) => {
-  const resultRegion = await axios.get(url);
+const getCountryInfo = async() => {
+  const resultRegion = await axios.get('https://restcountries.com/v3.1/region/europe');
   const countryArr = resultRegion.data.map((country) => {
     return {
       name: country.name.common,
@@ -14,43 +14,46 @@ const getInfo = async(url) => {
       population: country.population,
       currencies: Object.keys(country.currencies)[0],
       flagUrl: country.flags.png,
+      cats: [],
     }
   })
-  return countryArr
+  return countryArr;
 }
+getCountryInfo();
 
-
-const createHTML = async (element, ress) => {
-	// console.log(element)
-	return ress.send(`					
-		<div class="country-card">		
-			<img src= ${element.flagUrl} alt="" tabindex=0>
-			<div class="country-card_list">          
-        <p class="country-header">${element.name}</p>
-        <p class="country-info">Languages: ${element.languages}</p>
-        <p class="country-info">Population: ${element.population}</p>
-        <p class="country-info">Currencies: ${element.currencies}</p>
-			</div>		   
-	  </div>`)
+const getCatsInfo = async () => {
+  const tempArr = await axios.get('https://api.thecatapi.com/v1/breeds');
+  const catArr = tempArr.data.map((catObj) => {
+    return {
+      coutryName: catObj.origin,
+      catImgUrl: (!catObj.image) ? null : catObj.image.url,
+      breed: catObj.name,
+    }
+  });
+  return catArr;
 }
+getCatsInfo();
 
-// const sendHTML = async (item, res) => {
-
-// }
-
-/* GET home page. */
-router.get('/', (req, res, next) => {
-  res.render('index', { title: 'Express' });
-});
-
-router.post('/', upload.none(), async (req, res, next) => {
-  const URL = `https://restcountries.com/v3.1/region/${req.body.region}`;  
-  // res.send(`Hello ${URL}`)
-  const tempArr = await getInfo(URL);
-  tempArr.forEach(element => {
-    createHTML(element, res)
-    console.log(element)
+const getСombinedArr = (country, cat) => {
+  country.forEach(countryEl =>{
+    cat.forEach(catEl => {
+      if(countryEl.name === catEl.coutryName){
+        countryEl.cats.push(catEl)
+        console.log(countryEl)
+      }
+    })
+    
   })
-});
+  console.log(country)
+  
+}
 
-module.exports = router;
+const cuncutArr = async () => {
+  const coutryArr = await getCountryInfo();
+  const catsArr = await getCatsInfo();
+  getСombinedArr(coutryArr, catsArr)
+}
+cuncutArr();
+
+const arr = Promise.all([getCountryInfo(), getCatsInfo()]).then(r => { console.log(r[1][0])});
+

@@ -1,29 +1,8 @@
-/* body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+ * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-
-a {
-  color: #00B7FF;
-}
-div {
-  font-size: 20px;
-  
-}
-
-table,
-td {
-    border: 1px solid #333;
-} */
-
-
-   
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 
 html {
   overflow-x: hidden;
@@ -34,16 +13,37 @@ body {
   background-color: var(--body);
   color: hsl(200, 15%, 8%);
   font-size: 14px;
+  background: gray;
 }
-.country-card{
+.card{
   border: 1px solid black;
+  margin: 3px;
+}
+.country-header{
+  display: flex;
+  justify-content: space-around;
+}
+
+.cats-card{
+  display: flex;
+  justify-content: space-between;
+  /* height: 500px; */
+  width: 500px;
+  overflow-x: scroll;
 }
 
 .country-info {
   font-weight: 900;
   font-size: 1rem;
 }
-.country-header{
+.cat-name {
+  font-weight: 400;
+  font-size: 0.5rem;
+}
+.cat-info {
+  width: 30%;
+}
+.country-name{
   font-weight: 900;
   font-size: 2rem;
 }
@@ -53,13 +53,23 @@ body {
   /* padding-left: 5%; */
 }
 
-img {
-  max-width: 100%;
-  min-height: 160px;
+.flag-img {
+  max-width: 50%;
+  min-height: 130px;
   margin: auto;
   display: block;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
+}
+.cat-img {
+  max-width: 100%;
+  min-height: 40px;
+  margin: auto;
+  display: block;
+}
+.answer{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
 }
 
 
