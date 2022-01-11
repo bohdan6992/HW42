@@ -1,13 +1,18 @@
 const express = require('express');
-
+const multer  = require('multer');
 const router = express.Router();
+const upload = multer();
+const { createUser, getUserById, getAllUsers, updateUserByid } = require('../model/users');
+
 
 /* GET users listing. */
-router.get('/', (req, res, next) => {
-  
-  console.log(req.query); // данные после ? разделение между ними через &
-  console.log(req.params); // все что до слеша и после роутера
-  res.send('respond with a resource form users');
+router.get('/:id', async(req, res) => {
+  const user = await getUserById(req.params.id);
+  res.render('index', {user: user})
+});
+
+router.post('/', upload.none(), async (req, res) => {
+  await updateUserByid(req.body)
 });
 
 module.exports = router;

@@ -7,18 +7,43 @@
   <body>
 
     <form>
-      <input type="radio" name="region" value="africa">Africa<br>
-      <input type="radio" name="region" value="america">America<br>
-      <input type="radio" name="region" value="asia">Asia<br>
-      <input type="radio" name="region" value="europe">Europe<br>
-      <input type="radio" name="region" value="oceania">Oceania<br>
 
-      <div class="answer"></div>
+      name: <input type="text" name="name" required>
+      surname:<input type="text" name="surname" required>
+      telefon:<input type="text" name="number">
+      email:<input type="text" name="email">
+      info:<input type="text" name="info">
+      <button type="submit">OK</button>
+      
     </form>
-    
+
+    <table class="table table-striped">
+      <thead>
+          <tr>
+              <th>Name</th>
+              <th>Surname</th>
+              <th>Mobile</th>
+              <th>Email</th>
+              <th>Info</th>
+              <th></th>
+          </tr>
+      </thead>
+      <tbody>
+        <%usersList.forEach(user => {%>
+            <tr>
+              <td><a href="/users/<%= user._id %>"><%= user.name %></a></td>
+              <td><%= user.surname %></td>
+              <td><%= user.number %></td>
+              <td><%= user.email %></td>
+              <td><%= user.info %></td>
+              <td>
+                <a href="/delete/<%= user._id %>" onclick="return confirm('Are you sure to delete this record ?');">delete</a>
+            </td>
+            </tr>
+          <%})%>
+      </tbody>
   
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.js"></script>
-    <script src="js/main.js"></script>
+    <script src="/js/main.js"></script>
   </body>
 </html>

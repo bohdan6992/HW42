@@ -7,6 +7,7 @@
 var app = require('../app');
 var debug = require('debug')('baseexpressapp:server');
 var http = require('http');
+const mongoose = require('mongoose');
 
 /**
  * Get port from environment and store in Express.
@@ -21,11 +22,23 @@ app.set('port', port);
 
 var server = http.createServer(app);
 
+async function start() {
+ try {
+  const url = 'mongodb+srv://Bohdan:Test12345!@cluster0.sdrm3.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
+  await mongoose.connect(url);
+  server.listen(port)
+ } catch (e){
+   console.log(e)
+ }
+}
+
+start();
+
 /**
  * Listen on provided port, on all network interfaces.
  */
 
-server.listen(port);
+// server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
 

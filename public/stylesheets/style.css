@@ -1,75 +1,18 @@
- * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+main {
+  width: 50%;
+  margin: 50px auto;
+  text-align: center;
 }
 
-body {
-  font-family: "Numito Sans", sans-serif;
-  background-color: var(--body);
-  color: hsl(200, 15%, 8%);
-  font-size: 14px;
-  background: gray;
-}
-.answer{
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-}
-.card{
-  border: 1px solid black;
-  margin: 3px;
-}
-.country-header{
-  display: flex;
-  justify-content: space-around;
-}
-.country-info {
-  font-weight: 900;
-  font-size: 1rem;
-}
-.country-name{
-  font-weight: 900;
-  font-size: 2rem;
-}
-.countryDetails {
-  /*color: white; */
-  font-weight: 100;
-  /* padding-left: 5%; */
-}
-.flag-img {
-  max-width: 50%;
-  min-height: 130px;
-  margin: auto;
-  display: block;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+table {
+  margin: 50px auto;
 }
 
-.cats-card{
-  display: flex;
-  justify-content: space-between;
-  /* height: 500px; */
-  width: 500px;
-  overflow-x: scroll;
+table, th, td {
+  border-collapse: collapse;
+  border: 1px solid #000;
 }
 
-.cat-name {
-  font-weight: 400;
-  font-size: 0.5rem;
+th, td {
+  padding: 5px;
 }
-.cat-info {
-  width: 30%;
-}
-
-.cat-img {
-  max-width: 100%;
-  min-height: 40px;
-  margin: auto;
-  display: block;
-}
-
-
-
-
-
-
